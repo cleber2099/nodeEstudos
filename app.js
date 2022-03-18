@@ -1,6 +1,17 @@
 var http = require("http");
+var fs = require("fs")
+
 http.createServer(function(request,response){
-    response.write("Primeiros passos com node")
+fs.readFile("index.html",function(erro, conteudo){
+    if(erro){
+        console.log(erro);
+    }
+        else{
+            response.write(conteudo);
+        }
+    
     response.end();
+})
 }).listen(8081);
-console.log("Funcionou");
+
+console.log('rodando em 8081');
